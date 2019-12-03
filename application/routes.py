@@ -48,7 +48,20 @@ def register():
         print(RegisterForm.errors)
         return render_template('register.html', title='Register', form=RegisterForm)
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET','POST'])
 @login_required
 def dashboard():
 	return render_template('dashboard.html', title='Dashboard')
+
+@app.route('/admin', methods=['GET','POST'])
+@login_required
+def admin():
+    if current_user.admin == False:
+        return redirect(url_for('home'))
+
+def change_pass(password):
+
+def delete_deck(deck_name):
+
+def delete_card(card_name):
+

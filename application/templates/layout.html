@@ -1,15 +1,22 @@
 <html>
     <head>
-        <title>{{ title }} - Page </title>
+        <title>{{ title }}</title>
     </head>
     <div class="navbar">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('register') }}">Register</a>
-        </div>        
-    <body>
-        <h1>{{ title }} Page</h1>
-    </body>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('account') }}">Account</a>
+            {% if current_user.admin == True %}
+                <a href="{{ url_for('admin') }}">Admin Panel</a>
+            {% endif %}
+        {% else %}
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
     <body>
         {% block body_content %}{% endblock %}
     </body>

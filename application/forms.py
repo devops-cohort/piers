@@ -1,6 +1,8 @@
 from wtforms import StringField, SubmitField, IntegerField, PasswordField, BooleanField
 from flask_wtf import FlaskForm
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from application.models import users, card_list, deck_list
+from application import login_manager, password_hash as pw
 
 class LoginForm(FlaskForm):
     user_name = StringField('User name: ',
@@ -55,9 +57,50 @@ class CreateCard(FlaskForm):
         validators=[DataRequired(message=None))
         ]    
     )
+    submit = SubmitField('Create Card')
 
 class CreateDeck(FlaskForm):
     deck_name = StringField('Deck name: ',
     validators=[DataRequired(message=None), Length(min=2, max=30)
         ]    
     )
+    submit = SubmitField('Create Deck')
+
+class PasswordForm(FlaskForm):
+    current_password = PasswordField('Current Password', 
+        validators=[DataRequired()
+        ]
+    )
+    password = PasswordField('Password', 
+        validators=[DataRequired()
+        ]
+    )
+    confirm_pass = PasswordField('Password', 
+        validators=[DataRequired(), 
+            EqualTo('password')
+        ]
+    )
+    submit = SubmitField('Confirm Password')
+
+class AccountForm(FlaskForm):
+    email = StringField('Email', 
+        validators =[DataRequired(), 
+            Email()
+        ]
+    )
+    first_name = StringField('First Name',
+        validators=[DataRequired(message=None), Length(min=2, max=30)
+        ]
+    )
+    last_name = StringField('Last Name',
+        validators=[DataRequired(message=None), Length(min=2, max=30)
+        ]
+    )
+    submit = SubmitField('Update Details')
+
+    def validate_email(self, email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            
+            if user:
+                raise ValidationError('Email is already in use!')
