@@ -22,7 +22,7 @@ class users(db.Model):
 
 class card_list(db.Model):
     card_ID = db.Column(db.Integer, primary_key=True)
-    card_name = db.Column(db.String(30)), nullable=False, unique=True)
+    card_name = db.Column(db.String(30), nullable=False, unique=True)
     card_attk = db.Column(db.Integer, nullable=False)
     card_def = db.Column(db.Integer, nullable=False)
     children = db.relationship("deck_list", backref='author', lazy=True) 
@@ -35,9 +35,9 @@ class card_list(db.Model):
 
 class deck_list(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
-    deck_name = db.Column(db.String(30)), nullable=False)
-    user_ID = db.Column(db.Integer, nullable=False, foreign_key("users.id"))
-    card_ID = db.Column(db.Integer, nullable=False, foreign_key("card_list.card_ID"))
+    deck_name = db.Column(db.String(30), nullable=False)
+    user_ID = db.Column(db.Integer, db.ForeignKey("users.id"))
+    card_ID = db.Column(db.Integer, db.ForeignKey("card_list.card_ID"))
 
     def __repr__(self):
         return ''.join(['Deck ID: ', self.ID, '\r\n',

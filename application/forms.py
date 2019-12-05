@@ -33,7 +33,7 @@ class RegisterForm(FlaskForm):
         validators=[DataRequired(message=None), Length(min=5, max=30)
         ]    
     )
-    confirm-password = PasswordField('Please confirm your password: ',
+    confirm_password = PasswordField('Please confirm your password: ',
         validators=[DataRequired(message=None), Length(min=5, max=30), EqualTo('password')
         ]    
     )
@@ -50,11 +50,11 @@ class CreateCard(FlaskForm):
         ]    
     )
     card_attk = IntegerField('Attack: ',
-        validators=[DataRequired(message=None))
+        validators=[DataRequired(message=None)
         ]    
     )
     card_def = IntegerField('Defense: ',
-        validators=[DataRequired(message=None))
+        validators=[DataRequired(message=None)
         ]    
     )
     submit = SubmitField('Create Card')
@@ -110,14 +110,14 @@ class EditCardForm(FlaskForm):
         ]
     )
     card_attk = IntegerField('Attack: ',
-        validators=[DataRequired(message=None))
+        validators=[DataRequired(message=None)
         ]    
     )
     card_def = card_def = IntegerField('Defense: ',
-        validators=[DataRequired(message=None))
+        validators=[DataRequired(message=None)
         ]    
     )
     submit = SubmitField('Submit Changes')
 
-class SearchCard(Form):
-    card_search = TextField('Search', id='card_autocomplete')
+class SearchCard(FlaskForm):
+    card_search = StringField('Search', id='card_autocomplete')
