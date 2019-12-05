@@ -1,66 +1,66 @@
 {% extends "layout.html" %}
 {% block body_content %}
     <div class="form">
-            <form method="POST" action="">
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    {{ form.RegisterForm.user_name.label }}
-                    {% if  form.RegisterForm.user_name.errors %}
-                        {{  form.RegisterForm.user_name }}
-                        <div class="error">
-                            {% for error in form.RegisterForm.user_name.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{  form.RegisterForm.user_name }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.RegisterForm.first_name.label }}
-                    {% if  form.RegisterForm.first_name.errors %}
-                        {{  form.RegisterForm.first_name }}
-                        <div class="error">
-                            {% for error in form.RegisterForm.first_name.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{  form.RegisterForm.first_name }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.RegisterForm.last_name.label }}
-                    {% if  form.RegisterForm.last_name.errors %}
-                        {{  form.RegisterForm.last_name }}
-                        <div class="error">
-                            {% for error in form.RegisterForm.last_name.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{  form.RegisterForm.last_name }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.password.label }}
-                    {% if form.password.errors %}
-                        {{ form.password }}
-                        <div class="error">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.password }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.confirm_pass.label }}
+        <form method="POST" action="">
+            {{ form.hidden_tag(self) }}
+            <div class="form-group">
+                {{ form.RegisterForm.user_name.label }}
+                {% if  form.RegisterForm.user_name.errors %}
+                    {{  form.RegisterForm.user_name }}
+                    <div class="error">
+                        {% for error in form.RegisterForm.user_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{  form.RegisterForm.user_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.RegisterForm.first_name.label }}
+                {% if  form.RegisterForm.first_name.errors %}
+                    {{  form.RegisterForm.first_name }}
+                    <div class="error">
+                        {% for error in form.RegisterForm.first_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{  form.RegisterForm.first_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.RegisterForm.last_name.label }}
+                {% if  form.RegisterForm.last_name.errors %}
+                    {{  form.RegisterForm.last_name }}
+                    <div class="error">
+                        {% for error in form.RegisterForm.last_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{  form.RegisterForm.last_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.password.label }}
+                {% if form.password.errors %}
+                    {{ form.password }}
+                    <div class="error">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.confirm_pass.label }}
                     {% if form.confirm_pass.errors %}
                         {{ form.confirm_pass }}
                         <div class="error">
