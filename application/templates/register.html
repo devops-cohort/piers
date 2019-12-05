@@ -2,7 +2,7 @@
 {% block body_content %}
     <div class="form">
         <form method="POST" action="">
-            {{ form.hidden_tag(self) }}
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.RegisterForm.user_name.label }}
                 {% if  form.RegisterForm.user_name.errors %}
@@ -76,6 +76,6 @@
                 <div class="form-group">
                     {{ form.submit }}
                 </div>
-            </form>
+        </form>
     </div>
 {% endblock body_content %}
