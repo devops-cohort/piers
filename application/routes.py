@@ -36,7 +36,7 @@ def register():
         user = users(
             user_name=form.user_name.data,
             first_name=form.first_name.data,
-            last_name=from.last_name.data,
+            last_name=form.last_name.data,
             password=hashed
         )
         db.session.add(user)
