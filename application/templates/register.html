@@ -2,46 +2,46 @@
 {% block body_content %}
     <div class="form">
             <form method="POST" action="">
-                {{  forms.RegisterForm.hidden_tag() }}
+                {{  form.RegisterForm.hidden_tag() }}
                 <div class="form-group">
-                    {{ forms.RegisterForm.user_name.label }}
-                    {% if  forms.RegisterForm.user_name.errors %}
-                        {{  forms.RegisterForm.user_name }}
+                    {{ form.RegisterForm.user_name.label }}
+                    {% if  form.RegisterForm.user_name.errors %}
+                        {{  form.RegisterForm.user_name }}
                         <div class="error">
-                            {% for error in forms.RegisterForm.user_name.errors %}
+                            {% for error in form.RegisterForm.user_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{  forms.RegisterForm.user_name }}
+                        {{  form.RegisterForm.user_name }}
                     {% endif %}
                 </div>
                 <br>
                 <div class="form-group">
-                    {{ forms.RegisterForm.first_name.label }}
-                    {% if  forms.RegisterForm.first_name.errors %}
-                        {{  forms.RegisterForm.first_name }}
+                    {{ form.RegisterForm.first_name.label }}
+                    {% if  form.RegisterForm.first_name.errors %}
+                        {{  form.RegisterForm.first_name }}
                         <div class="error">
-                            {% for error in forms.RegisterForm.first_name.errors %}
+                            {% for error in form.RegisterForm.first_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{  forms.RegisterForm.first_name }}
+                        {{  form.RegisterForm.first_name }}
                     {% endif %}
                 </div>
                 <br>
                 <div class="form-group">
-                    {{ forms.RegisterForm.last_name.label }}
-                    {% if  forms.RegisterForm.last_name.errors %}
-                        {{  forms.RegisterForm.last_name }}
+                    {{ form.RegisterForm.last_name.label }}
+                    {% if  form.RegisterForm.last_name.errors %}
+                        {{  form.RegisterForm.last_name }}
                         <div class="error">
-                            {% for error in forms.RegisterForm.last_name.errors %}
+                            {% for error in form.RegisterForm.last_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{  forms.RegisterForm.last_name }}
+                        {{  form.RegisterForm.last_name }}
                     {% endif %}
                 </div>
                 <br>
