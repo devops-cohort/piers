@@ -25,7 +25,7 @@ class card_list(db.Model):
     card_name = db.Column(db.String(30), nullable=False, unique=True)
     card_attk = db.Column(db.Integer, nullable=False)
     card_def = db.Column(db.Integer, nullable=False)
-    children = db.relationship("deck_list", backref='author', lazy=True) 
+    children = db.relationship("deck_list", backref='auth', lazy=True) 
 
     def __repr__(self):
         return ''.join(['Card ID: ', self.card_ID, '\r\n',
