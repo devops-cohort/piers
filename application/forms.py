@@ -83,9 +83,8 @@ class PasswordForm(FlaskForm):
     submit = SubmitField('Confirm Password')
 
 class AccountForm(FlaskForm):
-    email = StringField('Email', 
-        validators =[DataRequired(), 
-            Email()
+    user_name = StringField('User Name',
+        validators=[DataRequired(message=None), Length(min=2, max=30)
         ]
     )
     first_name = StringField('First Name',
@@ -104,3 +103,21 @@ class AccountForm(FlaskForm):
             
             if user:
                 raise ValidationError('Email is already in use!')
+
+class EditCardForm(FlaskForm):
+    card_name = StringField('User Name',
+        validators=[DataRequired(message=None), Length(min=2, max=30)
+        ]
+    )
+    card_attk = IntegerField('Attack: ',
+        validators=[DataRequired(message=None))
+        ]    
+    )
+    card_def = card_def = IntegerField('Defense: ',
+        validators=[DataRequired(message=None))
+        ]    
+    )
+    submit = SubmitField('Submit Changes')
+
+class SearchCard(Form):
+    card_search = TextField('Search', id='card_autocomplete')

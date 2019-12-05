@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    <p>Log In!</p>
     <div class="form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -19,26 +18,35 @@
             </div>
             <br>
             <div class="form-group">
-                    {{ form.password.label }}
-                    {% if form.password.errors %}
-                        {{ form.password }}
+                {{ form.first_name.label }}
+                {% if form.first_name.errors %}
+                    {{ form.first_name }}
+                    <div class="error">
+                        {% for error in form.first_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.first_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                    {{ form.last_name.label }}
+                    {% if form.last_name.errors %}
+                        {{ form.last_name }}
                         <div class="error">
-                            {% for error in form.password.errors %}
+                            {% for error in form.last_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.password }}
+                        {{ form.last_name }}
                     {% endif %}
             </div>
             <br>
             <div class="form-group">
-                {{ form.remember.label }}
-                {{ form.remember }}
-            </div>
-            <br>
-            <div class="form-group">
-                    {{ form.submit }}
+                {{ form.submit }}
             </div>
         </form>
     </div>

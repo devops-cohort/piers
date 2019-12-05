@@ -1,4 +1,16 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<p>Welcome to the Dashboard!</p>
+    {% for name in decks %}
+        <div>
+            <h3>{{ name }}</h3>
+            <button type="button" onclick= "{{ url_for('deck', deck_id=name) }}">Select Deck</button>
+        </div>
+        <br>
+    {% endfor %}
+    <div>
+        <button type="button" onclick= "{{ url_for('create_deck') }}">Create Deck</button>
+    </div>
+    <div>
+        <button type="button" onclick= "{{ url_for('create_card') }}">Create Card</button>
+    </div>
 {% endblock body_content %}
