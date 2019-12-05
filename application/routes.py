@@ -31,13 +31,12 @@ def register():
     form = RegisterForm()
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
-    newuser = RegisterForm()
-    if newuser.validate_on_submit():
-        hashed = pw.hash_password(RegisterForm.password.data)
+    if form.validate_on_submit():
+        hashed = pw.hash_password(form.password.data)
         user = users(
-            user_name=RegisterForm.user_name.data,
-            first_name=RegisterForm.first_name.data,
-            last_name=RegisterForm.last_name.data,
+            user_name=form.user_name.data,
+            first_name=form.first_name.data,
+            last_name=from.last_name.data,
             password=hashed
         )
         db.session.add(user)
