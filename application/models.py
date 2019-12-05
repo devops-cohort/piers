@@ -6,7 +6,7 @@ class users(db.Model):
     user_name = db.Column(db.String(30), nullable=False, unique=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=True)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
     children = db.relationship("deck_list", backref='author', lazy=True)
 
