@@ -28,6 +28,7 @@ def login():
 
 @app.route('/register', methods=['GET','POST']) #done HTML
 def register():
+    form = RegisterForm()
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
     newuser = RegisterForm()
@@ -44,7 +45,7 @@ def register():
         return redirect(url_for('login'))
     else:
         print(RegisterForm.errors)
-        return render_template('register.html', title='Register', form=RegisterForm)
+        return render_template('register.html', title='Register', form=form)
 
 @app.route('/dashboard', methods=['GET','POST']) #done HTML
 @login_required
