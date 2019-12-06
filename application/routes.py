@@ -201,11 +201,11 @@ def delete_deck(deck):
 def add_card(deck):
     form = SearchCard()
     results = []
-    #if form.validate_on_submit:
-        #query = card_list.query.filter(card_list.card_name.islike(form.card_search.data)).all()
-        #for entry in query:
-        #    results.append(entry.card_name, entry.card_attk, entry.card_def)
-        #return render_template('add_card.html', title=deck, form=form, results=results)
+    if form.validate_on_submit:
+        query = card_list.query.filter(card_list.card_name.islike(form.card_search.data)).all()
+        for entry in query:
+            results.append(entry.card_name, entry.card_attk, entry.card_def)
+        return render_template('add_card.html', title=deck, form=form, results=results)
     return render_template('add_card.html', title=deck, deck=deck, form=form, results=results)
 
 @app.route("/confirm_card/<deck>/<card_name>", methods=['GET','POST']) #done
