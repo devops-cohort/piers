@@ -179,13 +179,16 @@ def deck(deck_id):
     query = deck_list.query.filter_by(deck_name=deck_id).all()
     if query:
         card_ids = []
+        case_list = {}
         for entry in query:
             card_ids.append(entry.card_ID)
-        for card in card_ids:
-            query = card_list.query.filter_by(card_ID=card).first()
-        return render_template('deck.html', title=deck_id, cards=query)
+        
+        for entry in card_ids:
+            query = card_list.query.filter_by(card_ID=entry).first()
+            case_list.update(query)
+        return render_template('deck.html', title=deck_id, cards=case_list)
     else:
-        return render_template('deck.html', title=deck_id, cards=[], deck_id=deck_id)
+        return render_template('deck.html', title=deck_id, cards={}, deck_id=deck_id)
 
 @app.route("/delete_deck/<deck>", methods=['GET','POST']) #done HTML
 @login_required
