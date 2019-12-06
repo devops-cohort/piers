@@ -12,6 +12,7 @@ class users(db.Model):
 
     def __repr__(self):
         return ''.join(['User ID: ', str(self.id), '\r\n',
+            'User Name: ', self.first_name, ' ',
             'Name: ', self.first_name, ' ', self.last_name, '\r\n',
             'Admin? ', self.admin
         ])
