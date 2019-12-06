@@ -129,7 +129,7 @@ def create_card():
         db.session.add(card)
         db.session.commit()
         return redirect(url_for('dashboard'))
-    return render_template('create_card.html', title=card, form=form)
+    return render_template('create_card.html', title='New Card', form=form)
 
 @app.route("/edit_user", methods=['GET','POST']) #done HTML
 @login_required
