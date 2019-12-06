@@ -204,7 +204,7 @@ def add_card(deck):
     if form.validate_on_submit:
         query = card_list.query.filter_by(card_name=form.card_search.data).all()
         results = query
-        return render_template('add_card.html', title=deck, form=form, results=results)
+        return render_template('add_card.html', title=deck, form=form, deck=deck, results=results)
     return render_template('add_card.html', title=deck, deck=deck, form=form, results=results)
 
 @app.route("/confirm_card/<deck>/<card_name>", methods=['GET','POST']) #done

@@ -14,7 +14,7 @@ class users(db.Model, UserMixin):
         return ''.join(['User ID: ', str(self.id), '\r\n',
             'User Name: ', self.first_name, ' ',
             'Name: ', self.first_name, ' ', self.last_name, '\r\n',
-            'Admin? ', self.admin
+            'Admin? ', str(self.admin)
         ])
 
     @login_manager.user_loader
@@ -41,7 +41,7 @@ class deck_list(db.Model):
     card_ID = db.Column(db.Integer, db.ForeignKey("card_list.card_ID"))
 
     def __repr__(self):
-        return ''.join(['Deck ID: ', self.ID, '\r\n',
+        return ''.join(['Deck ID: ', str(self.ID), '\r\n',
             'Name: ', self.deck_name, '\r\n',
-            'User: ', self.user_ID, ' ', 'Card: ', self.card_ID
+            'User: ', str(self.user_ID), ' ', 'Card: ', str(self.card_ID)
         ])
