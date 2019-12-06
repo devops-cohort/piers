@@ -209,7 +209,7 @@ def add_card(deck):
 
 @app.route("/confirm_card/<deck>/<card_name>", methods=['GET','POST']) #done
 @login_required
-def confirm_card(card_name, deck):
+def confirm_card(deck, card_name):
     card = card_list.query.filter_by(card_name=card_name).first()
     append_deck = deck_list(
         deck_name = deck,

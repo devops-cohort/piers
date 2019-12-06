@@ -26,7 +26,7 @@
         {% for entry in results %}
             <div>
                 <h4>{{ entry }}</h4>
-                <a href="{{ url_for('confirm_card', card_name=entry.card_name, deck=deck) }}">Add Card</a>
+                <a href="{{ url_for('confirm_card', deck=deck, card_name=entry.card_name) }}">Add Card</a>
             </div>    
         {% endfor %}
     </div>
