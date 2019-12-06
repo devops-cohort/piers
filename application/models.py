@@ -29,7 +29,7 @@ class card_list(db.Model):
     children = db.relationship("deck_list", backref='auth', lazy=True) 
 
     def __repr__(self):
-        return ''.join(['Card ID: ', str(self.card_ID), '\r\n',
+        return ''.join([
             'Name: ', self.card_name, '\r\n',
             'Attack: ', str(self.card_attk), ' ', 'Defense: ', str(self.card_def)
         ])
