@@ -173,22 +173,26 @@ def create_deck():
         return redirect(url_for('deck', deck_id=form.deck_name.data))
     return render_template('create_deck.html', title='Create A Deck', form=form)
     
-@app.route("/deck/<deck_id>", methods=['GET','POST']) #done HTML
+@app.route("/deck/<deck_id>", methods=['GET','POST']) #DIFFICULT
 @login_required
 def deck(deck_id):
     query = deck_list.query.filter_by(deck_name=deck_id).all()
     if query:
         card_ids = []
-        case_list = {}
+        name = []
+        attk = []
+        defence = []
         for entry in query:
-            card_ids.append(entry.card_ID)
-        
+            card_ids.append(entry.card_ID)  
         for entry in card_ids:
-            query = card_list.query.filter_by(card_ID=entry).first()
-            case_list.update(query)
-        return render_template('deck.html', title=deck_id, cards=case_list)
+            query = card_list.query.filter_by(card_ID=entry).all()
+                for card in query:
+                    name.append(card.card_name)
+                    attk.append(card.card_attk)
+                    defense.append(card.card_def)
+        return render_template('deck.html', title=deck_id, card_name=name, card_attk=attk, card_def=defence, count=len(name), , deck_id=deck_id)
     else:
-        return render_template('deck.html', title=deck_id, cards={}, deck_id=deck_id)
+        return render_template('deck.html', title=deck_id, count=0, deck_id=deck_id)
 
 @app.route("/delete_deck/<deck>", methods=['GET','POST']) #done HTML
 @login_required
