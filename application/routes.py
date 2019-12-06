@@ -171,7 +171,7 @@ def create_deck():
     form = CreateDeck()
     if form.validate_on_submit():
         return redirect(url_for('deck', deck_id=form.deck_name))
-    return render_template(url_for('create_deck'))
+    return render_template('create_deck.html', title='Create A Deck', form=form)
     
 @app.route("/deck/<deck_id>", methods=['GET','POST']) #done HTML
 @login_required
