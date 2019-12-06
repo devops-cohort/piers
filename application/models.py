@@ -31,7 +31,7 @@ class card_list(db.Model):
     def __repr__(self):
         return ''.join(['Card ID: ', self.card_ID, '\r\n',
             'Name: ', self.card_name, '\r\n',
-            'Attack: ', self.card_attk, ' ', 'Defense: ', self.card_def
+            'Attack: ', str(self.card_attk), ' ', 'Defense: ', str(self.card_def)
         ])
 
 class deck_list(db.Model):
