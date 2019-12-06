@@ -4,16 +4,16 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <div class="form-group">
-                {{ form.card_name.label }}
-                {% if form.card_name.errors %}
-                    {{ form.card_name }}
+                {{ form.card_search.label }}
+                {% if form.card_search.errors %}
+                    {{ form.card_search }}
                     <div class="error">
-                        {% for error in form.card_name.errors %}
+                        {% for error in form.card_search.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.card_name }}
+                    {{ form.card_search }}
                 {% endif %}
             </div>
             <br>
