@@ -122,8 +122,8 @@ def create_card():
     form = EditCardForm()
     if form.validate_on_submit():
         card = card_list(
-            card_name = form.card_name.data
-            card_attk = form.card_attk.data
+            card_name = form.card_name.data,
+            card_attk = form.card_attk.data,
             card_def = form.card_def.data
         )
         db.session.add(card)
