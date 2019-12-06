@@ -116,6 +116,21 @@ def edit_card(card, deck):
         form.card_def.data = card.card_def
     return render_template('edit_card.html', title=card, form=form)
 
+@app.route("/create_card", methods=['GET','POST']) #done HTML
+@login_required
+def create_card():
+    form = EditCardForm()
+    if form.validate_on_submit():
+        card = card_list(
+            card_name = form.card_name.data
+            card_attk = form.card_attk.data
+            card_def = form.card_def.data
+        )
+        db.session.add(card)
+        db.session.commit()
+        return redirect(url_for('dashboard'))
+    return render_template('create_card.html', title=card, form=form)
+
 @app.route("/edit_user", methods=['GET','POST']) #done HTML
 @login_required
 def edit_user(user_ID):
