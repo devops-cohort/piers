@@ -3,14 +3,14 @@
     {% for name in decks %}
         <div>
             <h3>{{ name }}</h3>
-            <button type="button" onclick= "{{ redirect(url_for('deck', deck_id=name)) }}">Select Deck</button>
+            <a href="{{ url_for('deck', deck_id=name) }}">Select Deck</a>
         </div>
         <br>
     {% endfor %}
     <div>
-        <button type="button" onclick= "{{ redirect(url_for('create_deck')) }}">Create Deck</button>
+        <a href="{{ url_for('create_deck') }}">Create Deck</a>
     </div>
     <div>
-        <button type="button" onclick= "{{ redirect(url_for('create_card')) }}">Create Card</button>
+        <a href="{{ url_for('create_card') }}">Create Card</a>
     </div>
 {% endblock body_content %}
