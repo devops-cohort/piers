@@ -202,7 +202,7 @@ def add_card(deck):
     form = SearchCard()
     results = []
     if form.validate_on_submit:
-        query = card_list.query.filter(card_list.card_name.like(form.card_search.data)).all()
+        query = card_list.query.filter(card_list.card_name.is_distinct_from(form.card_search.data)).all()
         for entry in query:
             results.append(entry.card_name, entry.card_attk, entry.card_def)
         return render_template('add_card.html', title=deck, form=form, results=results)
