@@ -121,5 +121,8 @@ class EditCardForm(FlaskForm):
     submit = SubmitField('Submit Card')
 
 class SearchCard(FlaskForm):
-    card_search = StringField('Search', id='card_autocomplete')
+    card_search = StringField('Search', id='card_autocomplete',
+        validators=[DataRequired(message=None)
+        ] 
+    )
     submit = SubmitField('Search')
