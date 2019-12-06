@@ -185,7 +185,7 @@ def deck(deck_id):
         for card in card_ids:
             query = card_list.query.filter_by(card_ID=card).first()
             card_names.append(query.card_name, query.card_attk, query.card_def)
-        return render_template('deck.html', title=deck_id, cards=card_names)
+        return render_template('deck.html', title=deck_id, cards=query)
     else:
         return render_template('deck.html', title=deck_id, cards=[], deck_id=deck_id)
 
