@@ -165,7 +165,7 @@ def remove_card(card, deck):
     db.session.commit()
     return redirect(url_for('deck', deck_id=deck))
 
-@app.route('/create-deck', methods=['GET','POST']) #done
+@app.route('/create_deck', methods=['GET','POST']) #done
 @login_required
 def create_deck():
     form = CreateDeck()
