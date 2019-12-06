@@ -170,8 +170,7 @@ def remove_card(card, deck):
 def create_deck():
     form = CreateDeck()
     if form.validate_on_submit():
-        name=form.deck_name
-        return redirect(url_for('deck', deck_id=name))
+        return redirect(url_for('deck', deck_id=form.deck_name.data))
     return render_template('create_deck.html', title='Create A Deck', form=form)
     
 @app.route("/deck/<deck_id>", methods=['GET','POST']) #done HTML
