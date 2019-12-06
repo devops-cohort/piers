@@ -122,3 +122,4 @@ class EditCardForm(FlaskForm):
 
 class SearchCard(FlaskForm):
     card_search = StringField('Search', id='card_autocomplete')
+    submit = SubmitField('Search')
