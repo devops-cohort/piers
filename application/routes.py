@@ -189,6 +189,13 @@ def deck(deck_id):
     else:
         return render_template('deck.html', title=deck_id, cards=[], deck_id=deck_id)
 
+@app.route("/delete_deck/<deck>", methods=['GET','POST']) #done HTML
+@login_required
+def delete_deck(deck):
+    query = deck_list.query.filter_by(deck_name=deck).delete()
+    db.session.commit()
+    return redirect(url_for('dashboard'))
+
 @app.route("/add_card/<deck>", methods=['GET','POST']) #NEED HTML
 @login_required
 def add_card(deck):
