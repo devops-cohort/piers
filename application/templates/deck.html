@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block body_content %}
+<h1>{{ deck_id }}</h1>
     {% for card in range(count) %}
         <div>
             <h3>{{card, '  ', card_name[card], '  ATTACK: ', card_attk[card], '  DEFENSE: ', card_def[card] }}</h3>
