@@ -99,7 +99,7 @@ def logout():
 	logout_user()
 	return redirect(url_for('login'))
 
-@app.route("/edit_card/<card>", methods=['GET','POST']) #done HTML
+@app.route("/edit_card/<deck>/<card>", methods=['GET','POST']) #done HTML
 @login_required
 def edit_card(card, deck):
     form = EditCardForm()
@@ -161,7 +161,7 @@ def delete_user(user_ID):
 @login_required
 def remove_card(card, deck):
     card_full = card_list.query.filter_by(card_name=card).first()
-    deck_list.query.filter_by(deck_name=deck, card_ID=card_full.card_ID).first().delete()
+    deck_list.query.filter_by(deck_name=deck, card_ID=card_full.card_ID).delete()
     db.session.commit()
     return redirect(url_for('deck', deck_id=deck))
 
