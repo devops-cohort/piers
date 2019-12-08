@@ -151,9 +151,11 @@ def edit_user(user_ID):
 @app.route("/delete_user/<user_ID>", methods=['GET','POST']) #done
 @login_required
 def delete_user(user_ID):
-    deck_list.filter_by(user_ID=user_ID).delete()
+    query = deck_list.query.filter_by(user_ID=user_ID)
+    db.session.delete(query)
     db.session.commit()
-    users.query.filter_by(id=user_ID).delete()
+    query = users.query.filter_by(id=user_ID)
+    db.session.delete(query)
     db.session.commit()
     return redirect(url_for('admin'))
 
