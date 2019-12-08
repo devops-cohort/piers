@@ -36,7 +36,7 @@ class TestBase(TestCase):
         card = card_list(card_ID=1, card_name="test card", card_attk=4000, card_def=4000)
 
         #create test deck
-        deck - deck_list(ID=1, deck_name="test deck", user_ID=1, card_ID=1)
+        deck = deck_list(ID=1, deck_name="test deck", user_ID=1, card_ID=1)
 
         # save entries to database
         db.session.add(admin)
