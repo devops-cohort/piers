@@ -2,9 +2,9 @@
 {% block body_content %}
     {% for card in in count %}
         <div>
-            <h3>{{card, '  ', card_name, '  ATTACK: ', card_attk, '  DEFENSE: ', card_def }}</h3>
-            <a href="{{ url_for('remove_card', card=card_name, deck=deck_id) }}">Remove Card</a>
-            <a href="{{ url_for('edit_card', card=name, deck=deck_id) }}">Edit Card</a>
+            <h3>{{card, '  ', card_name[card], '  ATTACK: ', card_attk[card], '  DEFENSE: ', card_def[card] }}</h3>
+            <a href="{{ url_for('remove_card', card=card_name[card], deck=deck_id) }}">Remove Card</a>
+            <a href="{{ url_for('edit_card', card=card_name[card], deck=deck_id) }}">Edit Card</a>
         </div>
         <br>
     {% endfor %}
