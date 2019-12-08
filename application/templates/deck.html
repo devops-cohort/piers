@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    {% for card in count %}
+    {% for card in range(count) %}
         <div>
             <h3>{{card, '  ', card_name[card], '  ATTACK: ', card_attk[card], '  DEFENSE: ', card_def[card] }}</h3>
             <a href="{{ url_for('remove_card', card=card_name[card], deck=deck_id) }}">Remove Card</a>
