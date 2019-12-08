@@ -157,7 +157,7 @@ def delete_user(user_ID):
     db.session.commit()
     return redirect(url_for('admin'))
 
-@app.route("/remove_card/<card>", methods=['GET','POST']) #done
+@app.route("/remove_card/<deck>/<card>", methods=['GET','POST']) #done
 @login_required
 def remove_card(card, deck):
     card_full = card_list.query.filter_by(card_name=card).first()
