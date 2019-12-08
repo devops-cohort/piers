@@ -225,7 +225,7 @@ def confirm_card(deck, card_name):
     db.session.commit()
     return redirect(url_for('deck', deck_id=deck))
 
-@app.route('/_autocomplete', methods=['GET']) #done
+@app.route('/_autocomplete', methods=['GET']) #Broken
 def autocomplete():
     query = card_list.query.all()
     cards = []
