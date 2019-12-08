@@ -45,21 +45,6 @@ class RegisterForm(FlaskForm):
         if user:
             raise ValidationError('User name is already in use!')
 
-class CreateCard(FlaskForm):
-    card_name = StringField('Card Name: ',
-        validators=[DataRequired(message=None), Length(min=2, max=30)
-        ]    
-    )
-    card_attk = IntegerField('Attack: ',
-        validators=[DataRequired(message=None)
-        ]    
-    )
-    card_def = IntegerField('Defense: ',
-        validators=[DataRequired(message=None)
-        ]    
-    )
-    submit = SubmitField('Create Card')
-
 class CreateDeck(FlaskForm):
     deck_name = StringField('Deck name: ',
     validators=[DataRequired(message=None), Length(min=2, max=30)
@@ -106,7 +91,7 @@ class AccountForm(FlaskForm):
                 raise ValidationError('Email is already in use!')
 
 class EditCardForm(FlaskForm):
-    card_name = StringField('User Name',
+    card_name = StringField('Card Name: ',
         validators=[DataRequired(message=None), Length(min=2, max=30)
         ]
     )

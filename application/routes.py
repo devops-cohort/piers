@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from application import app, db, password_hash as pw
 from application.models import users, card_list, deck_list
 import json
-from application.forms import RegisterForm, LoginForm, CreateCard, CreateDeck, PasswordForm, AccountForm, EditCardForm, SearchCard
+from application.forms import RegisterForm, LoginForm, CreateDeck, PasswordForm, AccountForm, EditCardForm, SearchCard
 
 @app.route('/')
 @app.route('/home') #done HTML
@@ -161,7 +161,7 @@ def delete_user(user_ID):
 @login_required
 def remove_card(card, deck):
     card_full = card_list.query.filter_by(card_name=card).first()
-    deck_list.query.filter_by(deck_name=deck, card_ID=card_full.card_ID).delete()
+    deck_list.query.filter_by(deck_name=deck, card_ID=card_full.card_ID).first().delete()
     db.session.commit()
     return redirect(url_for('deck', deck_id=deck))
 
