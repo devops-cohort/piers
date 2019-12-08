@@ -71,13 +71,13 @@ def account():
 	if form.validate_on_submit():
 		current_user.first_name = form.first_name.data
 		current_user.last_name = form.last_name.data
-		current_user.email = form.email.data
+		current_user.user_name = form.user_name.data
 		db.session.commit()
 		return redirect(url_for('account'))
 	elif request.method == 'GET':
 		form.first_name.data = current_user.first_name
 		form.last_name.data = current_user.last_name
-		form.email.data = current_user.email
+		form.user_name.data = current_user.user_name
 	return render_template('account.html', title='Account', form=form)
 
 @app.route("/change_password", methods=['GET','POST']) #done HTML
@@ -131,7 +131,7 @@ def create_card():
         return redirect(url_for('dashboard'))
     return render_template('create_card.html', title='New Card', form=form)
 
-@app.route("/edit_user", methods=['GET','POST']) #done HTML
+@app.route("/edit_user/<user_ID>", methods=['GET','POST']) #done HTML
 @login_required
 def edit_user(user_ID):
     form = AccountForm()
@@ -148,7 +148,7 @@ def edit_user(user_ID):
         form.user_name.data = user.user_name
     return render_template('edit_user.html', title=user.user_name, form=form)
 
-@app.route("/delete_user", methods=['GET','POST']) #done
+@app.route("/delete_user/<user_ID>", methods=['GET','POST']) #done
 @login_required
 def delete_user(user_ID):
     deck_list.filter_by(user_ID=user_ID).delete()
