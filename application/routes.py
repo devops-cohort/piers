@@ -103,7 +103,7 @@ def logout():
 @login_required
 def edit_card(card, deck):
     form = EditCardForm()
-    card = card_list.query.filter_by(card_name=card)
+    card = card_list.query.filter_by(card_name=card).first()
     if form.validate_on_submit():
         card.card_name = form.card_name.data
         card.card_attk = form.card_attk.data
