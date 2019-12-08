@@ -193,7 +193,7 @@ class TestRouting(TestBase):
 class TestModels(TestBase):
     
     def test_users_model(self):
-        user = users(useer_name="test2", first_name="test", last_name="user", password="test2019", admin=False)
+        user = users(user_name="test2", first_name="test", last_name="user", password="test2019", admin=False)
 
         db.session.add(user)
         db.session.commit()
@@ -206,12 +206,12 @@ class TestModels(TestBase):
         db.session.add(card)
         db.session.commit()
 
-        self.assertEqual(Posts.query.count(), 2)
+        self.assertEqual(card_list.query.count(), 2)
 
     def test_deck_list_model(self):
-        deck = card_list(ID=2, deck_name="test deck 2", user_ID=1, card_ID=1)
+        deck = deck_list(ID=2, deck_name="test deck 2", user_ID=1, card_ID=1)
 
         db.session.add(deck)
         db.session.commit()
 
-        self.assertEqual(Posts.query.count(), 2)
+        self.assertEqual(deck_list.query.count(), 2)
