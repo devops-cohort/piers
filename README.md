@@ -23,3 +23,22 @@ My CI Pipeline includes an install file that makes jenkins set up much more stre
 
 
 [Full Database](https://github.com/devops-cohort/piers/tree/Feature/Images/Cards.csv)
+
+
+
+
+*Risk Assessment*
+
+Password security:
+
+The risk of password being compromised would be very high impact on the service, but steps were taken early on to ensure no passwords are ever stored in clear text.
+
+
+GCP MySQL compromised:
+
+The database being compromised would be catastrophic to the operation of the app, to ensure all measures were taken to protect this resource, environmental variables were used from the begining of development until the end.
+
+
+Users accessing pages without permission:
+
+Users accessing pages without permission could potentially lead to a server crash, extensive use of the login_required tag and redirect if statements have secured these pages.
