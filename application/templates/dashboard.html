@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    {% for name in decks %}
+        <div>
+            <h4>{{ name }}</h4>
+            <a href="{{ url_for('deck', deck_id=name) }}">Select Deck</a>
+        </div>
+        <br>
+    {% endfor %}
+    <div>
+        <a href="{{ url_for('create_deck') }}">Create Deck</a>
+    </div>
+    <div>
+        <a href="{{ url_for('create_card') }}">Create Card</a>
+    </div>
+{% endblock body_content %}

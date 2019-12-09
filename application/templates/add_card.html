@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class="form">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.card_search.label }}
+                {% if form.card_search.errors %}
+                    {{ form.card_search }}
+                    <div class="error">
+                        {% for error in form.card_search.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.card_search }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+    <div class="results">
+        {% for entry in results %}
+            <div>
+                <h4>{{ entry }}</h4>
+                <a href="{{ url_for('confirm_card', deck=deck, card_name=entry.card_name) }}">Add Card</a>
+            </div>    
+        {% endfor %}
+    </div>
+    <script>
+        $(function() {
+            $.ajax({
+                url: '{{ url_for("autocomplete") }}'
+                }).done(function (data){
+                    $('#city_autocomplete').autocomplete({
+                        source: data,
+                        minLength: 2
+                    });
+                });
+            });
+    </script>
+{% endblock body_content %}

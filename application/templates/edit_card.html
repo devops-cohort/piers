@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class="form">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.card_name.label }}
+                {% if form.card_name.errors %}
+                    {{ form.card_name }}
+                    <div class="error">
+                        {% for error in form.card_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.card_name }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.card_attk.label }}
+                {% if form.card_attk.errors %}
+                    {{ form.card_attk }}
+                    <div class="error">
+                        {% for error in form.card_attk.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.card_attk }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.card_def.label }}
+                {% if form.card_def.errors %}
+                    {{ form.card_def }}
+                    <div class="error">
+                        {% for error in form.card_def.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.card_def }}
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>    
+{% endblock body_content %}
