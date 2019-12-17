@@ -1,0 +1,7 @@
+/Images/
+/tests/
+.install
+.gitignore
+/__pycache__/
+.dockerignore
+/.git/
